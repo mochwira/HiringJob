@@ -32,6 +32,7 @@ public class RoleController {
         System.out.println(roles.toString());
 
         return "HELLO";
+        
     }
     
     @GetMapping("/test")
