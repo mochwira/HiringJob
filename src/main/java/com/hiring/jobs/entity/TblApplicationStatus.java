@@ -21,16 +21,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author D
+ * @author mocha
  */
 @Entity
 @Table(name = "tbl_application_status")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TblApplicationStatus.findAll", query = "SELECT t FROM TblApplicationStatus t")
-    , @NamedQuery(name = "TblApplicationStatus.findByStatusId", query = "SELECT t FROM TblApplicationStatus t WHERE t.statusId = :statusId")
-    , @NamedQuery(name = "TblApplicationStatus.findByNamaStatus", query = "SELECT t FROM TblApplicationStatus t WHERE t.namaStatus = :namaStatus")
-    , @NamedQuery(name = "TblApplicationStatus.findByStatus", query = "SELECT t FROM TblApplicationStatus t WHERE t.status = :status")})
+    @NamedQuery(name = "TblApplicationStatus.findAll", query = "SELECT t FROM TblApplicationStatus t"),
+    @NamedQuery(name = "TblApplicationStatus.findByStatusId", query = "SELECT t FROM TblApplicationStatus t WHERE t.statusId = :statusId"),
+    @NamedQuery(name = "TblApplicationStatus.findByNamaStatus", query = "SELECT t FROM TblApplicationStatus t WHERE t.namaStatus = :namaStatus"),
+    @NamedQuery(name = "TblApplicationStatus.findByDetailStatus", query = "SELECT t FROM TblApplicationStatus t WHERE t.detailStatus = :detailStatus")})
 public class TblApplicationStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,8 +46,8 @@ public class TblApplicationStatus implements Serializable {
     private String namaStatus;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "status")
-    private boolean status;
+    @Column(name = "detail_status")
+    private boolean detailStatus;
 
     public TblApplicationStatus() {
     }
@@ -56,10 +56,10 @@ public class TblApplicationStatus implements Serializable {
         this.statusId = statusId;
     }
 
-    public TblApplicationStatus(Integer statusId, String namaStatus, boolean status) {
+    public TblApplicationStatus(Integer statusId, String namaStatus, boolean detailStatus) {
         this.statusId = statusId;
         this.namaStatus = namaStatus;
-        this.status = status;
+        this.detailStatus = detailStatus;
     }
 
     public Integer getStatusId() {
@@ -78,12 +78,12 @@ public class TblApplicationStatus implements Serializable {
         this.namaStatus = namaStatus;
     }
 
-    public boolean getStatus() {
-        return status;
+    public boolean getDetailStatus() {
+        return detailStatus;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setDetailStatus(boolean detailStatus) {
+        this.detailStatus = detailStatus;
     }
 
     @Override

@@ -14,9 +14,11 @@ import java.util.Optional;
  *
  * @author D
  */
+
+//coba ubah id nya ke Role ID
 public interface RoleInterface {
-    Iterable<TblRole> findAll(); 
-    Optional<TblRole> getById(Integer id);
-    void deleleteById(String id);
-    void save(TblRole role); 
+    void save(TblRole role);
+    Iterable<TblRole> getRoleActive();
+    public Optional<TblRole> getRoleById(Integer roleId);
+//    public String getMaxFaqQuestion();
 }

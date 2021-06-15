@@ -30,11 +30,19 @@ and open the template in the editor.
                 </thead>
                 <tbody>
 
+                <!-- ROLE -->
+                
+                 <tr th:each="role : ${roles}">
+                        <th scope="row">1</th>
+                        <td th:text="${roles.roleId}"></td>
+                        <td th:text="${roles.namaRole}"></td>
+                        <td><button type="button" class="btn btn-primary">Update</button> 
+                        <button type="button" class="btn btn-danger">Delete</button></td>
+                        
+                
+                <!-- status -->
 
-
-                    <!-- status -->
-
-                    <tr th:each="status : ${status}">
+                     <tr th:each="status : ${status}">
                         <th scope="row">1</th>
                         <td th:text="${status.statusId}"></td>
                         <td th:text="${status.namaStatus}"></td>

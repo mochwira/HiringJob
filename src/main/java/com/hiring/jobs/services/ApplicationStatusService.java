@@ -6,8 +6,10 @@
 package com.hiring.jobs.services;
 
 import com.hiring.jobs.entity.TblApplicationStatus;
+import static com.hiring.jobs.entity.TblApplicationStatus_.statusId;
 import com.hiring.jobs.interfaces.ApplicationStatusInterface;
 import com.hiring.jobs.repository.ApplicationStatusRepository;
+import com.hiring.jobs.repository.DepartementRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,33 +22,22 @@ import org.springframework.stereotype.Service;
 public class ApplicationStatusService implements ApplicationStatusInterface {
 
     @Autowired
-    private ApplicationStatusRepository appStatusRepository;
+    private ApplicationStatusRepository appStatusRepo;
     
     @Override
-    public Iterable<TblApplicationStatus> getAll() {
-        return appStatusRepository.findAll();
+    public void save(TblApplicationStatus status) {
+        this.appStatusRepo.save(status);
     }
 
     @Override
-    public Optional<TblApplicationStatus> getById(Integer id) {
-        return appStatusRepository.findById(id);
-    }
-
-    @Override
-    public void deleteById(Integer id) {
-        appStatusRepository.deleteById(id);
-    }
-
-    @Override
-    public void save(TblApplicationStatus applicationStatus) {
-       appStatusRepository.save(applicationStatus);
+    public Optional<TblApplicationStatus> getApplicationStatusById(Integer statusId) {
+        return appStatusRepo.findById(statusId);
     }
 
     @Override
     public Iterable<TblApplicationStatus> getApplicationStatusActive() {
-        return appStatusRepository.getApplicationStatusActive();
+      return appStatusRepo.getApplicationStatusActive(); 
     }
-
 
 
 }

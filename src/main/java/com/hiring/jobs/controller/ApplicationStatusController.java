@@ -7,11 +7,16 @@ package com.hiring.jobs.controller;
 
 import com.hiring.jobs.entity.TblApplicationStatus;
 import com.hiring.jobs.services.ApplicationStatusService;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -21,22 +26,93 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class ApplicationStatusController {
     
-    @Autowired
-    private ApplicationStatusService appStatusService;
+     @Autowired
+    private ApplicationStatusService applicationStatusService;
     
     @GetMapping("/status")
-    public String getConsultattionStatus(Model model) {
-        Iterable<TblApplicationStatus> applicationStatus = appStatusService.getApplicationStatusActive();
-        model.addAttribute("status", applicationStatus);
-
+    public String getApplicationStatus(Model model) {
+        Iterable<TblApplicationStatus> status = applicationStatusService.getApplicationStatusActive();
+        model.addAttribute("statuses", status);
+        //model.mergeAttributes(map)
         TblApplicationStatus applicationStatusCrud = new TblApplicationStatus();
 
-        model.addAttribute("addApplicationStatusCrud", applicationStatusCrud);        
-        model.addAttribute("editApplicationStatusCrud", applicationStatusCrud);
-        model.addAttribute("removeApplicationStatusCrud", applicationStatusCrud);
+//        model.addAttribute("masterAdd", masterCrud);        
+//        model.addAttribute("masterEdit", masterCrud);
+        model.addAttribute("applicationStatusRemove", applicationStatusCrud);
+
+        return "applicationstatus/v_page.html";
+    }
+    
+    @GetMapping("/status/add")
+    public String applicationStatusAdd(
+            Model model
+    ) 
+    {
+//        Iterable<Master> master = masterService.getMasterActive();
+//        model.addAttribute("masters", master);
+//        
+        TblApplicationStatus applicationStatusCrud = new TblApplicationStatus();
+
+        model.addAttribute("applicationStatusAdd", applicationStatusCrud);  
+        return "applicationstatus/v_page_add.html";
+    }
+
+    //idnya dimana ?
+    @GetMapping("/status/edit/{statusId}")
+    public String applicationStatusEdit(
+            Model model,
+            @PathVariable Integer statusId
+    ) 
+    {
+        Optional<TblApplicationStatus> status = applicationStatusService.getApplicationStatusById(statusId);
+        model.addAttribute("applicationStatusEdit", status);
+        return "applicationstatus/v_page_edit.html";
+    }
+    
+    
+    @PostMapping("/status/insert")
+    public String applicationStatusInsert(
+            @ModelAttribute("applicationStatusAdd") TblApplicationStatus status
+    ) 
+    {
+        this.applicationStatusService.save(status);
+        return "redirect:/status";
+    }
+    
+    
+    @PostMapping(value = "/status/update")
+    public String applicationStatusUpdate(
+            @RequestParam(value = "statusId", required = false) Integer statusId,
+            @RequestParam(value = "namaStatus", required = false) String namaStatus,
+            @RequestParam(value = "detailStatus", required = false) Boolean detailStatus
+    ) {
+        TblApplicationStatus statuse = new TblApplicationStatus(statusId, namaStatus, detailStatus);
+        statuse.setStatusId(statusId);
+        statuse.setNamaStatus(namaStatus);
+        statuse.setDetailStatus(detailStatus);
+
+        this.applicationStatusService.save(statuse);
+        return "redirect:/status";
         
-        return "index.html";
-//        return "application_status/v_page_consultationstatus.html";
+    }
+    
+    @GetMapping(value = "/status/remove/{statusId}")
+    public String applicationStatusRemove(
+            @PathVariable Integer statusId
+    ) {
+        Optional<TblApplicationStatus> statuss = applicationStatusService.getApplicationStatusById(statusId);
+        Integer Id = statuss.get().getStatusId();
+        String namaStatus = statuss.get().getNamaStatus();
+        Boolean detailStatus = true;
+        
+        TblApplicationStatus status = new TblApplicationStatus(statusId, namaStatus, detailStatus);
+        status.setStatusId(statusId);
+        status.setNamaStatus(namaStatus);
+        status.setDetailStatus(detailStatus);
+
+        this.applicationStatusService.save(status);
+        return "redirect:/status";
+        
     }
     
 }

@@ -21,16 +21,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author D
+ * @author mocha
  */
 @Entity
 @Table(name = "tbl_role")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TblRole.findAll", query = "SELECT t FROM TblRole t")
-    , @NamedQuery(name = "TblRole.findByRoleId", query = "SELECT t FROM TblRole t WHERE t.roleId = :roleId")
-    , @NamedQuery(name = "TblRole.findByNamaRole", query = "SELECT t FROM TblRole t WHERE t.namaRole = :namaRole")
-    , @NamedQuery(name = "TblRole.findByStatusRole", query = "SELECT t FROM TblRole t WHERE t.statusRole = :statusRole")})
+    @NamedQuery(name = "TblRole.findAll", query = "SELECT t FROM TblRole t"),
+    @NamedQuery(name = "TblRole.findByRoleId", query = "SELECT t FROM TblRole t WHERE t.roleId = :roleId"),
+    @NamedQuery(name = "TblRole.findByNamaRole", query = "SELECT t FROM TblRole t WHERE t.namaRole = :namaRole"),
+    @NamedQuery(name = "TblRole.findByStatusRole", query = "SELECT t FROM TblRole t WHERE t.statusRole = :statusRole")})
 public class TblRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -110,5 +110,6 @@ public class TblRole implements Serializable {
     public String toString() {
         return "com.hiring.jobs.entity.TblRole[ roleId=" + roleId + " ]";
     }
+
     
 }

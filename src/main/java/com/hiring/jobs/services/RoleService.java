@@ -19,28 +19,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleService implements RoleInterface{
     
-    @Autowired
-    private RoleRepository role;
-    
-    
-    @Override
-    public Iterable<TblRole> findAll() {
-        return role.findAll();
-    }
-
-    @Override
-    public Optional<TblRole> getById(Integer id) {
-        return role.findById(id);
-    }
-
-    @Override
-    public void deleleteById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     @Autowired
+    private RoleRepository roleRepo;
 
     @Override
     public void save(TblRole role) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.roleRepo.save(role);
+    }
+
+    @Override
+    public Iterable<TblRole> getRoleActive() {
+        return roleRepo.getRoleActive();
+    }
+
+    @Override
+    public Optional<TblRole> getRoleById(Integer roleId) {
+        return roleRepo.findById(roleId);
     }
     
+     
 }

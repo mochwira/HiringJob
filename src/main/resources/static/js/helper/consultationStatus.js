@@ -1,34 +1,34 @@
 $(document).ready(function() {
-    $('#activeConsultationStatus').val('true');
+    $('#status').val('true');
 });
 
 
-function editConsultationStatus(param) {
+function editApplicationStatus(param) {
     console.log(param);
-    var idConsultationStatus = $('#idConsultationStatusText' + param).text();
-    var nameConsultationStatus = $('#nameConsultationStatusText' + param).text();
-    var activeConsultationStatus = $('#activeConsultationStatusText' + param).text();
+    var idApplicationStatus = $('#statusIdText' + param).text();
+    var nameApplicationStatus = $('#namaStatusText' + param).text();
+    var activeApplicationStatus = $('#statusText' + param).text();
 
-    $('.idConsultationStatusEdit').val(idConsultationStatus);
-    $('.nameConsultationStatusEdit').val(nameConsultationStatus);
-    $('.activeConsultationStatusEdit').val('true');
-    $('#edit-row-form').attr("consultationstatus", "/consultationstatus/edit/" + idConsultationStatus);
-    $('#editConsultationStatus').modal('toggle');
+    $('.idApplicationStatusEdit').val(idApplicationStatus);
+    $('.nameApplicationStatusEdit').val(nameApplicationStatus);
+    $('.activeApplicationStatusEdit').val('true');
+    // $('#edit-row-form').attr("action", "/status/edit");
+    $('#editApplicationStatus').modal('toggle');
 }
 
-function removeConsultationStatus(param) {
-    var idConsultationStatus = $('#idConsultationStatusText' + param).text();
-    var nameConsultationStatus = $('#nameConsultationStatusText' + param).text();
-    console.log(idConsultationStatus);
-    $('.idConsultationStatusRemove').val(idConsultationStatus);
-    $('.nameConsultationStatusRemove').val(nameConsultationStatus);
-    $('.activeConsultationStatusRemove').val('false');
-    $('.nameConsultationStatusRemoveText').text(nameConsultationStatus);
-    $('#remove-row-form').attr("consultationstatus", "/consultationstatus/edit/" + idConsultationStatus);
-    $('#removeConsultationStatus').modal('toggle');
+function removeApplicationStatus(param) {
+    var idApplicationStatus = $('#statusIdText' + param).text();
+    var nameApplicationStatus = $('#namaStatusText' + param).text();
+    console.log(idApplicationStatus);
+    $('.idApplicationStatusRemove').val(idApplicationStatus);
+    $('.nameApplicationStatusRemove').val(nameApplicationStatus);
+    $('.activeApplicationStatusRemove').val('false');
+    $('.nameApplicationStatusRemoveText').text(nameApplicationStatus);
+    // $('#remove-row-form').attr("action", "/status/edit");
+    $('#removeApplicationStatus').modal('toggle');
 }
 
 
 $(document).ready(function() {
-    $('#activeConsultationStatus').val('true');
+    $('#status').val('true');
 });
