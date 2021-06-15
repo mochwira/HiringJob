@@ -103,7 +103,7 @@ public class ApplicationStatusController {
         Optional<TblApplicationStatus> statuss = applicationStatusService.getApplicationStatusById(statusId);
         Integer Id = statuss.get().getStatusId();
         String namaStatus = statuss.get().getNamaStatus();
-        Boolean detailStatus = true;
+        Boolean detailStatus = false;
         
         TblApplicationStatus status = new TblApplicationStatus(statusId, namaStatus, detailStatus);
         status.setStatusId(statusId);

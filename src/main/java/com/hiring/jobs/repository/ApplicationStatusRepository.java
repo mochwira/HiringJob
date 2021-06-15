@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ApplicationStatusRepository extends CrudRepository<TblApplicationStatus, Integer> {
  
-  @Query(value = "SELECT * FROM tbl_application_status WHERE tbl_application_status.detail_status = 0", nativeQuery = true)
+  @Query(value = "SELECT * FROM tbl_application_status WHERE tbl_application_status.detail_status = 1", nativeQuery = true)
   public Iterable<TblApplicationStatus> getApplicationStatusActive();
 
 }

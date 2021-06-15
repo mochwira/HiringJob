@@ -20,9 +20,5 @@ public interface DepartementRepository extends CrudRepository<TblDepartement, In
     @Query(value = "SELECT * FROM tbl_departement WHERE tbl_departement.status_departement = 1", nativeQuery = true)
   Iterable <TblDepartement> getDepartementActive();
 
-//    public void save(TblDepartement departement);
-//
-//    public Optional<TblDepartement> findById(Integer departementId);
-
  
 }
