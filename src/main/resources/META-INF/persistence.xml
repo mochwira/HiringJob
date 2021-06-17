@@ -3,7 +3,6 @@
   <persistence-unit name="com.hiring_jobs_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.hiring.jobs.entity.TblInterview</class>
-    <class>com.hiring.jobs.entity.TblApplication</class>
     <class>com.hiring.jobs.entity.TblTest</class>
     <class>com.hiring.jobs.entity.TblDepartement</class>
     <class>com.hiring.jobs.entity.TblRole</class>
