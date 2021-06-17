@@ -44,7 +44,7 @@ public class TblApplicationStatus implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "nama_status")
     private String namaStatus;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
     @Column(name = "detail_status")
     private boolean detailStatus;

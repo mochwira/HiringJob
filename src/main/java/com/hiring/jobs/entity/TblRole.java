@@ -44,7 +44,7 @@ public class TblRole implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "nama_role")
     private String namaRole;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
     @Column(name = "status_role")
     private boolean statusRole;

@@ -44,7 +44,7 @@ public class TblDepartement implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "nama_departement")
     private String namaDepartement;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
     @Column(name = "status_departement")
     private boolean statusDepartement;

@@ -83,7 +83,7 @@ public class RoleController {
     public String roleUpdate(
             @RequestParam(value = "roleId", required = false) Integer roleId,
             @RequestParam(value = "namaRole", required = false) String namaRole,
-            @RequestParam(value = "statusRole", required = false) Boolean statusRole
+            @RequestParam(value = "statusRole", required = true) Boolean statusRole
     ) {
         TblRole role = new TblRole(roleId, namaRole, statusRole);
         role.setRoleId(roleId);

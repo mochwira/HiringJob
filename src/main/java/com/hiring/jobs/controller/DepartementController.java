@@ -81,7 +81,7 @@ public class DepartementController {
     public String departementUpdate(
             @RequestParam(value = "departementId", required = false) Integer departementId,
             @RequestParam(value = "namaDepartement", required = false) String namaDepartement,
-            @RequestParam(value = "statusDepartement", required = false) Boolean statusDepartement
+            @RequestParam(value = "statusDepartement", required = true) Boolean statusDepartement
     ) {
         TblDepartement departement = new TblDepartement(departementId, namaDepartement, statusDepartement);
         departement.setDepartementId(departementId);
